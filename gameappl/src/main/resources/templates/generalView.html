@@ -5,17 +5,20 @@
 <title>Learn++</title>
 </head>
 <body>
-<form>
+<form action ="/check_DB">
 Email: <input type="text" name="mail" placeholder="Email" />
-Passwod: <input type="password" name="password" placeholder="password"/>
-<br></br>
-<button type="submit">Login</button>
+<br/>
+Passwod: <input type="password" name="password" placeholder="password" />
+<br/>
+<input type="submit" value="login" />
 </form>
-<form action="/signup_teacher">
+
+
+<form action="/teacher/signUpForm">
 <input type="submit" value="signup as teacher" />
 </form>
 
-<form action="/signup_student">
+<form action="/student/signup_student">
 <input type="submit" value="signup as student" />
 </form>
 </body>
