@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import gameappl.domain.Game;
 import gameappl.domain.Student;
-import gameappl.domain.TFQuestion;
 import gameappl.domain.T_F;
 import gameappl.domain.Teacher;
 import gameappl.repo.StudentRepo;
@@ -29,18 +28,18 @@ public class SysController {
     
 	@RequestMapping("/")
 	public String generalView(){
-		/*T_F gam=new T_F();
+	/*	T_F gam=new T_F();
 		gam.setCreatorName("hussam");
 		gam.setName("weka");
 		gam.setRate(20);
 		gam.setType("TorF");
-		TFQuestion q=new TFQuestion("mhm", true);
-		ArrayList<TFQuestion> myq=new ArrayList<TFQuestion>();
-	   myq.add(q);
-	   gam.setContent(myq);
+		gam.setQuestion("Is apple Company?");
+		gam.setAnswer(true);
 	   
 	   tfRepo.save(gam);
-		*/return "teacherView";
+	  */ 
+		//return "teacherView";
+	return "generalView";
 	}
 	/*
 	@RequestMapping("/signup_teacher")

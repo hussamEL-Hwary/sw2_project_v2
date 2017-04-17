@@ -24,8 +24,9 @@ public class GameController {
 	@RequestMapping("/create")
 	public String takeGameInfo(Model model)
 	{
-		model.addAttribute("categories",catRepo.findAll());
 		model.addAttribute("games",tfRepo.findAll());
+		model.addAttribute("categories",catRepo.findAll());
+		
 		
 		return "createGame";
 	}
