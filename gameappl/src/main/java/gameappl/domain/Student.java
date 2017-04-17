@@ -13,10 +13,10 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="student")
+@Table(name="student")  //table name in database
 public class Student {
     
-    private int id;
+    private int id;     //unique id for database
 	private String name;
 	private String password;
 	private int age;
@@ -24,14 +24,18 @@ public class Student {
 	private String gender;
 	private Set<ScoreDetail>myScores;
 	
-	public Student(int id, String name, String password, int age) {
+	
+	
+	
+	public Student(String name, String password, int age, String mail, String gender) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.age = age;
-		
+		this.mail = mail;
+		this.gender = gender;
 	}
+
 	public Student() {
 		super();
 		

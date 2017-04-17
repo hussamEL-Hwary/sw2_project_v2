@@ -17,9 +17,9 @@ public class Category {
 	@Column(unique=true)
 	private String name;
 	
-	public Category(int id, String name) {
+	public Category( String name) {
 		super();
-		this.id = id;
+		
 		this.name = name;
 	}
 	

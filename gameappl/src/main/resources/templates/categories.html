@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Learn++</title>
+</head>
+
+<body>
+
+<form action="/category/saveCate">
+   <h4>Create New Category</h4>
+  <input type="text" name="newCategory" placeholder="New Category Name" th:required="required" />
+  <br/>
+  <input type="submit" value="Create Category" />
+  <h5>Categories</h5>
+<table>
+      <tr th:each="category : ${categories}">
+        
+     <td th:text="${category.name}"></td>
+        
+    </tr>
+ </table>
+ 
+ 
+ 
+</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Learn++</title>
+</head>
+<body>
+
+<form>
+
+Game Type
+
+ <select>
+             <option th:each="game : ${games}"
+        
+         th:value="${game.type}"
+         th:text="${game.type}"
+         />   
+ </select>
+
+<br/>
+
+Category
+ <select>
+ <option th:each="category : ${categories}"
+        
+         th:value="${category.name}"
+         th:text="${category.name}"
+         />
+ </select>
+ <br/>
+ Name
+ <input type="text" name="name" />
+ <br/>
+ <input type="submit" value="create" />
+ 
+</form>
+
+
+</body>
+
+</html>
