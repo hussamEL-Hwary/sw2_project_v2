@@ -38,8 +38,8 @@ public class SysController {
 	   
 	   tfRepo.save(gam);
 	  */ 
-		//return "teacherView";
-	return "generalView";
+		return "teacherView";
+	//return "generalView";
 	}
 	/*
 	@RequestMapping("/signup_teacher")

@@ -3,41 +3,39 @@ package gameappl.domain;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 public class T_F extends Game {
 
 
-	private String question;
-	private boolean answer;
+	private ArrayList<String>  question=new ArrayList<String>();
+	private ArrayList<Boolean>  answer=new ArrayList<Boolean>();
 	
 	
 	
+	public T_F(ArrayList<String> question, ArrayList<Boolean> answer) {
+		super();
+		this.question = question;
+		this.answer = answer;
+	}
 	public T_F() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public T_F(String question, boolean answer) {
-		super();
-		this.question = question;
-		this.answer = answer;
-	}
-	public String getQuestion() {
+	public ArrayList<String> getQuestion() {
 		return question;
 	}
-	public void setQuestion(String question) {
+	public void setQuestion(ArrayList<String> question) {
 		this.question = question;
 	}
-	public boolean isAnswer() {
+	public ArrayList<Boolean> getAnswer() {
 		return answer;
 	}
-	public void setAnswer(boolean answer) {
+	public void setAnswer(ArrayList<Boolean> answer) {
 		this.answer = answer;
 	}
 	
 	
-	
-
-
 	
 }
