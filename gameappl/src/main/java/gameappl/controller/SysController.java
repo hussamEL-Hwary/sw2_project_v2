@@ -19,6 +19,10 @@ import gameappl.repo.T_FRepo;
 @Controller
 public class SysController {
 	
+	Student systemStudent;
+	Teacher systemTeacher;
+	
+	
     @Autowired
 	private StudentRepo studentRepo;
 	
@@ -28,19 +32,15 @@ public class SysController {
     
 	@RequestMapping("/")
 	public String generalView(){
-	/*	T_F gam=new T_F();
-		gam.setCreatorName("hussam");
-		gam.setName("weka");
-		gam.setRate(20);
-		gam.setType("TorF");
-		gam.setQuestion("Is apple Company?");
-		gam.setAnswer(true);
-	   
-	   tfRepo.save(gam);
-	  */ 
-		return "teacherView";
-	//return "generalView";
+	return "teacherView";
+		//return "generalView";
 	}
+	
+	//@RequestMapping("/login")
+	//public String 
+	
+	
+	
 	/*
 	@RequestMapping("/signup_teacher")
 	public String signup_teacher(){
