@@ -7,7 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+/**
+ * Entity category class to keep track of all categories in the application
+ * @author Hussam
+ *
+ */
 @Entity
 @Table(name="categories")
 public class Category {
@@ -75,4 +79,4 @@ public class Category {
 	
 	
 	
-}
+}//class Category
