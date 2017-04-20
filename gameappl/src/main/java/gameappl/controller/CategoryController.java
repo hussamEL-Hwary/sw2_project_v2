@@ -15,22 +15,36 @@ import org.springframework.web.servlet.ModelAndView;
 
 import gameappl.domain.Category;
 import gameappl.repo.CategoryRepo;
-
+/**
+ * Controller class to execute category repository Query
+ * and make them services function to call
+ * @author Hussam
+ *
+ */
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
 
+	//to execute Category Query
 	@Autowired
-	CategoryRepo catRepo;   //to execute Category Query
+	CategoryRepo catRepo;   
 	
-	//return all categories in database
+	/**
+	 *find all Categories from db and back them to view 
+	 * @param model
+	 * @return view of all categories
+	 */
 	@RequestMapping("/allcat")
     public String listCat(Model model) {
         model.addAttribute("categories",catRepo.findAll());
-		
 		return "categories";
     }
 	
+	/**
+	 * save new Category from user to db
+	 * @param categoryName
+	 * @return view of teacherView
+	 */
 	@GetMapping("/saveCate")
 	public String saveCategory(
 			@RequestParam("newCategory") String categoryName
@@ -40,4 +54,5 @@ public class CategoryController {
 		return "teacherView";
 		
 	}
-}
+	
+}//class CategoryController
