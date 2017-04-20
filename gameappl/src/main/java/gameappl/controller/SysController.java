@@ -18,27 +18,37 @@ import gameappl.repo.CategoryRepo;
 import gameappl.repo.StudentRepo;
 import gameappl.repo.T_FRepo;
 import gameappl.repo.TeacherRepo;
-
+/**
+ * Controller class 
+ * @author Hussam
+ *
+ */
 @Controller
 public class SysController {
 	
-	Student systemStudent;
-	Teacher systemTeacher;
-	String gameType;
-	String gameCat;
-	String gameName;
+	// ==============
+	// PRIVATE FIELDS
+	// ==============
 	
+	private Student systemStudent;
+	private Teacher systemTeacher;
+	private String gameType;
+	private String gameCat;
+	private String gameName;
 	//execute student query
 	@Autowired
 	private StudentRepo studentRepo;
-	
-    //execute teacher query
+	//execute teacher query
     @Autowired
     private TeacherRepo teacherRepo;
     @Autowired
     private T_FRepo tfRepo;
     @Autowired
     private CategoryRepo catRepo;
+    
+    //===============
+    //PIUBLIC METHODS
+    //===============
     
     /**
      * @return genralView of main page
@@ -71,6 +81,13 @@ public class SysController {
 		return "generalView";
 	}
 	
+	/**
+	 * find the view of filling game based on game type
+	 * @param typ
+	 * @param cat
+	 * @param nam
+	 * @return  gamecontent or back to filling form
+	 */
 	@RequestMapping("/fillgame")
 	public String findGameType(
 			@RequestParam("type") String typ,
@@ -87,7 +104,21 @@ public class SysController {
 		return "createGame";
 		
 	}
-	
+	/**
+	 * most stupid idea in the world 
+	 *save true false game type in db  
+	 * @param q1
+	 * @param a1
+	 * @param q2
+	 * @param a2
+	 * @param q3
+	 * @param a3
+	 * @param q4
+	 * @param a4
+	 * @param q5
+	 * @param a5
+	 * @return teacher view
+	 */
 	@RequestMapping("/save")
 	public String saveGame(
 			@RequestParam("name1") String q1,
