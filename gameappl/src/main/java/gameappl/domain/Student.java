@@ -4,6 +4,7 @@ package gameappl.domain;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,13 +43,14 @@ public class Student {
 	@NotNull
 	private int age;
 	//student mail
+	@Column(unique=true)
 	@NotNull
 	private String mail;
 	//student gender
 	@NotNull
 	private String gender;
 	//student score for each game
-	private Set<ScoreDetail>myScores;
+	//private Set<ScoreDetail>myScores;
 	
 	/**
 	 * student constructor

@@ -17,8 +17,9 @@ import gameappl.repo.TeacherRepo;
 @RequestMapping("/teacher")
 public class TeacherController {
 	
+	//to execute teacher query
 	@Autowired
-	private TeacherRepo teacherRepo; //to execute query
+	private TeacherRepo teacherRepo; 
 	
 	//this function return the form view to user
 	@RequestMapping("/signUpForm")

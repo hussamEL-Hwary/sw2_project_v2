@@ -6,5 +6,5 @@ import gameappl.domain.Student;
 
 public interface StudentRepo extends JpaRepository<Student, Long> {
 
-
+public Student findByMailAndPassword(String mail,String password);
 }

@@ -2,10 +2,32 @@
 <html>
 <head>
 <meta charset="ISO-8859-1"></meta>
-<title>Calculator Application</title>
+<title>learn++</title>
 </head>
 <body>
 
+<form action="game/showgames">
+
+<table>
+      <tr th:each="category : ${categories}">
+        
+     <td th:text="${category.name}"></td>
+        
+    </tr>
+ </table>
+ 
+ <select name="category">
+ 
+ <option th:each="category : ${categories}"
+  th:value="${category.name}"
+  th:text="${category.name}"
+ />
+ 
+ </select>
+
+<input type="submit" value="Show Games"/>
+
+</form>
 	
 
 </body>

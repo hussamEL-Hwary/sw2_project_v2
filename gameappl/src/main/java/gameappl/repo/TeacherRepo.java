@@ -6,4 +6,5 @@ import gameappl.domain.Teacher;
 
 public interface TeacherRepo extends JpaRepository<Teacher, Integer> {
 
+	public Teacher findByMailAndPassword(String mail,String password);
 }

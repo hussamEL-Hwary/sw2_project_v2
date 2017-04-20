@@ -6,22 +6,22 @@
 </head>
 <body>
 
-<form action = "game/fill">
+<form action = "/fillgame">
 
 Game Type
 
- <select>
-             <option th:each="game : ${games}"
+ <select name="type">
+             <option th:each="type : ${types}"
         
-         th:value="${game.type}"
-         th:text="${game.type}"
+         th:value="${type.name}"
+         th:text="${type.name}"
          />   
  </select>
 
 <br/>
 
 Category
- <select>
+ <select name="category">
  <option th:each="category : ${categories}"
         
          th:value="${category.name}"
@@ -30,7 +30,7 @@ Category
  </select>
  <br/>
  Name
- <input type="text" name="name" />
+ <input type="text" name="name" th:required="required"/>
  <br/>
  <input type="submit" value="create" />
  

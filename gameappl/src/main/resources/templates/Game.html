@@ -9,17 +9,24 @@
 <form action="">
 
 
-Games
+
+Choose Game
  <select>
- 
+ <option th:each="game:${games}"
+  th:value="${game.name}"
+  th:text="${game.name}"
+ />
  </select>
 
 <br/>
 
-Choose Game
+Games
 <table>
-     
-   
+     <tr th:each="game:${games}">
+   <td
+    th:text="${game.name}">
+   </td>
+   </tr>
  </table>
  
  <input type="submit" value="Play"  />

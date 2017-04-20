@@ -30,13 +30,22 @@ public abstract class Game {
 	
 	@NotNull
 	private String type;
-	
+	@NotNull
+	private String category;
 	private double rate;
 	
 	private ArrayList<String> comments=new ArrayList<String>();
 
 	
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -61,6 +70,14 @@ public abstract class Game {
 		this.type = type;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public double getRate() {
 		return rate;
 	}
@@ -79,8 +96,6 @@ public abstract class Game {
 
 	
 	
-	
-
 	
 	
 	
