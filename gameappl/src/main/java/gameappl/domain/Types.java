@@ -65,4 +65,4 @@ public class Types {
 		this.name = name;
 	}
 	
-}
+}//class Types
