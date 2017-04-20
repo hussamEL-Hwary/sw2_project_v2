@@ -25,9 +25,18 @@ import gameappl.repo.CategoryRepo;
 @RequestMapping("/category")
 public class CategoryController {
 
+	// ==============
+	// PRIVATE FIELDS
+	// ==============
+	
 	//to execute Category Query
 	@Autowired
 	CategoryRepo catRepo;   
+	
+	// ==============
+	// PUBLIC METHODS
+	// ==============
+
 	
 	/**
 	 *find all Categories from db and back them to view 
