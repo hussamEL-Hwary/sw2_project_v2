@@ -15,6 +15,7 @@ import gameappl.domain.Student;
 import gameappl.domain.T_F;
 import gameappl.domain.Teacher;
 import gameappl.repo.CategoryRepo;
+import gameappl.repo.GameRepo;
 import gameappl.repo.StudentRepo;
 import gameappl.repo.T_FRepo;
 import gameappl.repo.TeacherRepo;
@@ -35,6 +36,9 @@ public class SysController {
 	private String gameType;
 	private String gameCat;
 	private String gameName;
+	private Game currentGame;
+	private T_F currentT_F;
+	
 	//execute student query
 	@Autowired
 	private StudentRepo studentRepo;
@@ -45,6 +49,8 @@ public class SysController {
     private T_FRepo tfRepo;
     @Autowired
     private CategoryRepo catRepo;
+    @Autowired
+    private GameRepo gameRepo;
     
     //===============
     //PIUBLIC METHODS
@@ -137,10 +143,10 @@ public class SysController {
 		ArrayList<String>  question=new ArrayList<String>();
 		ArrayList<Boolean>  answer=new ArrayList<Boolean>();
 		question.add(q1);
-		question.add(q1);
-		question.add(q1);
-		question.add(q1);
-		question.add(q1);
+		question.add(q2);
+		question.add(q3);
+		question.add(q4);
+		question.add(q5);
 		gameToSave.setCreatorName(systemTeacher.getName());
 		gameToSave.setName(gameName);
 		gameToSave.setType(gameType);
@@ -150,6 +156,49 @@ public class SysController {
 		tfRepo.save(gameToSave);
 		return "teacherView";
 	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/findgame")
+	public String findGame(Model model,
+			@RequestParam("game") String gamename
+			)
+	{
+		
+		currentGame=gameRepo.findByName(gamename);
+		
+		if(currentGame.getType().equals("TF"))
+		{
+			currentT_F=(T_F) currentGame;
+	     	model.addAttribute("questions", currentT_F.getQuestion());
+	     	return "playing";	
+		}
+		return "done";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*@RequestMapping("/lol")
 	public String gView(){

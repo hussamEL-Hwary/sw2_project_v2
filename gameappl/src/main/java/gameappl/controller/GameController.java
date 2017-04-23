@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import gameappl.domain.Game;
+import gameappl.domain.T_F;
 import gameappl.repo.CategoryRepo;
 import gameappl.repo.GameRepo;
 import gameappl.repo.T_FRepo;
@@ -67,4 +69,5 @@ public class GameController {
 		return "Game";
 	}
 	
+		
 }//class GameController

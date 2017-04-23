@@ -6,12 +6,10 @@
 </head>
 <body>
 
-<form action="">
-
-
+<form action="/findgame">
 
 Choose Game
- <select>
+ <select name="game">
  <option th:each="game:${games}"
   th:value="${game.name}"
   th:text="${game.name}"

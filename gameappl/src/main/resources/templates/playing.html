@@ -6,12 +6,33 @@
 </head>
 <body>
 
-<form action="">
+<form>
 
 
+<table>
+     
+     <tr th:each="question : ${questions}">    
+     <td th:text="${question}">
+       
+       </td>
+        
+    
+    <td>
+    <br/>
+    <input type  = "radio" th:name="${question}"  value="true" />True
+    <input type  = "radio" th:name="${question}" value="false"/>False
+    </td>
+   
+    
+       
+     
+    </tr>
+    
+    
+    
+ </table>
  
- <input type="submit" value="Show Result"  />
-
+ <input type="submit" value="Submit" />
 </form>
 
 	

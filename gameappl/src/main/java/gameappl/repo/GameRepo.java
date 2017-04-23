@@ -15,4 +15,5 @@ import gameappl.domain.Game;
 public interface GameRepo extends GameBaseRepo<Game> {
 
 	public ArrayList<Game> findByCategory(String category);
+	public Game findByName(String name);
 }
