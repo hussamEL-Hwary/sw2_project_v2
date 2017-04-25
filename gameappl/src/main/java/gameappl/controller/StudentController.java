@@ -47,14 +47,14 @@ public class StudentController {
 	}
 
 	/**
-	 * add new student in database
+	 * add new student in database has unique email
 	 * 
 	 * @param name
 	 * @param email
 	 * @param password
 	 * @param age
 	 * @param gender
-	 * @return generalView for student to log in
+	 * @return generalView for student to log in or duplicate user
 	 */
 
 	@GetMapping("/add_st_DB")
@@ -63,6 +63,13 @@ public class StudentController {
 			@RequestParam("gender") String gender) {
 		// create new student to save in student database
 		Student studentToSave = new Student(name, password, age, email, gender);
+		Student checkStudent=studentRepo.findByMail(email);
+		//check
+		if(checkStudent!=null)
+		{
+			if(studentToSave.getMail().equals(checkStudent.getMail()))
+				return "duplicatUser";
+		}
 		studentRepo.save(studentToSave);
 		// return the generalView page to user
 		return "generalView";
