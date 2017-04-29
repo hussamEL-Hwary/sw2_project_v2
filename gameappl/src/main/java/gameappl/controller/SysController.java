@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import gameappl.domain.Game;
+import gameappl.domain.ScoreDetail;
 import gameappl.domain.Student;
 import gameappl.domain.T_F;
 import gameappl.domain.Teacher;
@@ -38,7 +39,10 @@ public class SysController {
 	private String gameName;
 	private Game currentGame;
 	private T_F currentT_F;
-	
+	private int TFcounter=0;
+	private ArrayList<String>currentQues;
+	private ArrayList<Boolean>currentAnswers;
+	private int TFCurrentScore=0;
 	//execute student query
 	@Autowired
 	private StudentRepo studentRepo;
@@ -130,13 +134,13 @@ public class SysController {
 			@RequestParam("name1") String q1,
 			@RequestParam("select1") boolean a1 ,
 			@RequestParam("name2") String q2,
-			@RequestParam("select2") String a2,
+			@RequestParam("select2") Boolean a2,
 			@RequestParam("name3") String q3,
-			@RequestParam("select3") String a3,
+			@RequestParam("select3") Boolean a3,
 			@RequestParam("name4") String q4,
-			@RequestParam("select4") String a4,
+			@RequestParam("select4") Boolean a4,
 			@RequestParam("name5") String q5,
-			@RequestParam("select5") String a5
+			@RequestParam("select5") Boolean a5
 			)
 	{
 		T_F gameToSave=new T_F();
@@ -147,6 +151,12 @@ public class SysController {
 		question.add(q3);
 		question.add(q4);
 		question.add(q5);
+		answer.add(a1);
+		answer.add(a2);
+		answer.add(a3);
+		answer.add(a4);
+		answer.add(a5);
+		
 		gameToSave.setCreatorName(systemTeacher.getName());
 		gameToSave.setName(gameName);
 		gameToSave.setType(gameType);
@@ -159,8 +169,8 @@ public class SysController {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * find game by name 
+	 * @return page of playing game  
 	 */
 	@RequestMapping("/findgame")
 	public String findGame(Model model,
@@ -173,70 +183,70 @@ public class SysController {
 		if(currentGame.getType().equals("TF"))
 		{
 			currentT_F=(T_F) currentGame;
-	     	model.addAttribute("questions", currentT_F.getQuestion());
+			currentQues=currentT_F.getQuestion();
+			currentAnswers=currentT_F.getAnswer();
+	     	model.addAttribute("questions",currentQues.get(0));
+	     	TFcounter++;
 	     	return "playing";	
 		}
-		return "done";
+		return "";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*@RequestMapping("/lol")
-	public String gView(){
-		System.out.println(systemTeacher.getName());
-	return "done";
-	}
-	
-	//@RequestMapping("/login")
-	//public String 
-	
-	
-	
-	/*
-	@RequestMapping("/signup_teacher")
-	public String signup_teacher(){
+	/**
+	 * make student play game
+	 * @param model
+	 * @param playerAnswer
+	 * @return score page or other question page
+	 */
+	@RequestMapping("/nextQues")
+	public String nextQuestion(Model model, @RequestParam("ans")String playerAnswer)
+	{
+		if((playerAnswer.equals("true")&&currentAnswers.get(TFcounter-1)==true)||
+		   (playerAnswer.equals("false")&&currentAnswers.get(TFcounter-1)==false))
+		 TFCurrentScore++;
+			
+		if(TFcounter==currentQues.size())
+		{
+			boolean found=false;
+			int maxResult=TFCurrentScore;
+			ArrayList<ScoreDetail>check=new ArrayList<ScoreDetail>();
+			if(systemStudent.getMyScores()!=null)
+			check=systemStudent.getMyScores();
+			if(check!=null){
+			for(int i=0;i<check.size();i++)
+			{
+				if(check.get(i).getGameName().equals(currentT_F.getName()))
+					{
+					maxResult=Math.max(maxResult,check.get(i).getScore());
+					check.get(i).setScore(maxResult);
+					
+					found=true;
+					break;
+					}
+					
+			}
+			}
+			if(found==false){
+			ScoreDetail added=new ScoreDetail(currentT_F.getName(),maxResult);
+			System.out.println(currentT_F.getName());
+			System.out.println(maxResult);
+			check.add(added);
+			}
+			systemStudent.setMyScores(check);
+			//studentRepo.save(systemStudent);//cant update student
+			TFCurrentScore=0;
+			TFcounter=0;
+			return "done"; //
+			
+		}
+		else {
+			model.addAttribute("questions",currentQues.get(TFcounter));
+			TFcounter++;
+			return "playing";
+		}
 		
-		return "signup_teacher";
 	}
-
 	
 	
 	
-	@RequestMapping(path="/add_te_DB",method=RequestMethod.POST)
-	public String add_te_DB(
-			@RequestParam("name") String name,
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("age") int age,
-			@RequestParam("gender") String gender
-			){
-		Teacher obj = new Teacher();
-		obj.setName(name);
-		obj.setMail(email);
-		obj.setPassword(password);
-		obj.setAge(age);
-		obj.setGender(gender);
-		
-		return "done";
-	}
-	*/
 }
