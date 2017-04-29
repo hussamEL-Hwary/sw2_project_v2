@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import gameappl.domain.ScoreDetail;
 import gameappl.domain.Student;
-import gameappl.repo.ScoreDetailRepo;
 import gameappl.repo.StudentRepo;
 
 /**
@@ -67,7 +64,7 @@ public class StudentController {
 		//check
 		if(checkStudent!=null)
 		{
-			if(studentToSave.getMail().equals(checkStudent.getMail()))
+			
 				return "duplicatUser";
 		}
 		studentRepo.save(studentToSave);
