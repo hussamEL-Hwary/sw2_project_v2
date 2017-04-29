@@ -1,28 +1,131 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1"></meta>
-<title>Learn++</title>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Learn++</title>
+        
+		<style>
+* {
+    padding: 0;
+    margin: 0;
+}
 
-</head>
-<body>
-<form action ="/check" method="post">
-Email: <input type="text" name="mail" placeholder="Email" />
-<br/>
-Password: <input type="password" name="password" placeholder="password" />
-<br/>
-<input type="submit" value="login" />
-</form>
+body {
+    background: #141E30;
+    background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
+    background: linear-gradient(to bottom, #243B55, #141E30);
+}
 
+.forms {
+    background-color: #FFF;
+    width: 500px;
+    margin: 100px auto;
+    padding-bottom: 5%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #FFF;
+}
 
-<form action="/teacher/signUpForm">
-<input type="submit" value="signup as teacher" />
-</form>
+.forms h1 {
+    color: #2c3e50;
+    text-align: center;
+    padding-top: 8%;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: cursive;
+}
 
-<form action="/student/signup_student">
-<input type="submit" value="signup as student" />
-</form>
-</body>
+.forms .check input[type="text"],
+.forms .check input[type="password"] {
+    border: none;
+    border-bottom: 3px solid #2c3e50;
+    width: 350px;
+    display: block;
+    margin: 0px auto;
+    padding: 12px 0;
+    font-family: cursive;
+    font-size: 18px;
+}
 
+.forms .check input:focus {
+    outline: none;
+}
 
+.forms .check input[type="text"] {
+    padding-top: 20px;
+}
+
+.forms .check input[type="submit"] {
+    background-color: #2c3e50;
+    border: none;
+    width: 350px;
+    display: block;
+    padding: 10px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px auto 15px auto;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.forms .teacher {
+    display: inline-block;
+}
+
+.forms .student {
+    display: inline-block;
+}
+
+.forms .teacher input,
+.forms .student input {
+    width: 170px;
+    display: block;
+    background-color: #2ecc71;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    font-family: monospace;
+    text-align: center;
+}
+
+.forms .teacher input {
+    margin: 10px 75px;
+
+}
+
+.forms .student input {
+    margin: 10px -69px;
+
+}
+
+		</style>
+    </head>
+    <body>
+        
+        <div class="forms">
+            <h1>Log In</h1>
+            <form class="check" action="/check" method="post">
+                <input type="text" name="mail" placeholder=" Email" />
+                <br/>
+                <input type="password" name="password" placeholder=" Password" />
+                <br/>
+                <input type="submit" value="Log In" />
+            </form>
+            
+            <form class="teacher" action="/teacher/signUpForm" method="post">
+                <input type="submit" value="SignUp As Teacher" />
+            </form>
+            
+            <form class="student" action="/student/signup_student" method="post">
+                <input type="submit" value="SignUp As Student" />
+            </form>
+        </div>
+        
+    </body>
 </html>
