@@ -44,6 +44,11 @@ public class TeacherController {
 			@RequestParam("password") String password, @RequestParam("age") int age,
 			@RequestParam("gender") String gender) {
 		Teacher teacherToSave = new Teacher(name, password, age, email, gender);
+		Teacher checkTeacher=teacherRepo.findByMail(email);
+		if(checkTeacher!=null)
+		{
+			return "duplicatUser";
+		}
 		teacherRepo.save(teacherToSave);
 
 		return "generalView";
