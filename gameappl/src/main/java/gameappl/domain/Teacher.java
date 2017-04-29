@@ -1,10 +1,12 @@
 package gameappl.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity teacher class to represent teacher in db
@@ -22,10 +24,16 @@ public class Teacher {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@NotNull
 	private String name;
+	@NotNull
 	private String password;
+	@NotNull
 	private int age;
+	@Column(unique=true)
+	@NotNull
 	private String mail;
+	@NotNull
 	private String gender;
 	
 	//==============
