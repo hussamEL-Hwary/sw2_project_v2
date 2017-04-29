@@ -10,4 +10,5 @@ import gameappl.domain.Category;
  */
 public interface CategoryRepo extends JpaRepository<Category,Integer> {
 
+	Category findByName(String name);
 }
