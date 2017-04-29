@@ -1,6 +1,7 @@
 package gameappl.domain;
 
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -50,7 +51,7 @@ public class Student {
 	@NotNull
 	private String gender;
 	//student score for each game
-	//private Set<ScoreDetail>myScores;
+	private ArrayList<ScoreDetail>myScores=new ArrayList<ScoreDetail>();
 	
 	/**
 	 * student constructor
@@ -149,32 +150,15 @@ public class Student {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	/*
-	@OneToMany(mappedBy = "Student", cascade = CascadeType.ALL)
-	public Set<ScoreDetail> getmyScore()
-	{
+
+	public ArrayList<ScoreDetail> getMyScores() {
 		return myScores;
 	}
-	
-	public void setmyScore(Set<ScoreDetail> scores)
-	{
-		this.myScores=scores;
+
+	public void setMyScores(ArrayList<ScoreDetail> myScores) {
+		this.myScores = myScores;
 	}
 	
-	/*@Override
-	public String toString(){
-		String result=String.format("Student[id=%d,name='%s',passwors='%s',age='%s',mail='%s',gender='%s']",
-				id,name,password,age,mail,gender);
-		if(myScores!=null)
-		{
-			for(ScoreDetail score:myScores)
-			{
-				result+=String.format("ScoreDetail[id=%d,name='%s',score=%d]",score.getId(),score.getGameName(),score.getScore() );
-			}
-		}
-		return result;
-	}
-	*/
+	
 	
 }//Student class
