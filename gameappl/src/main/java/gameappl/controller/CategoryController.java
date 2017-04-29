@@ -59,6 +59,9 @@ public class CategoryController {
 			@RequestParam("newCategory") String categoryName
 			){
 		Category categoryToSave=new Category(categoryName);
+		Category checkCateg=catRepo.findByName(categoryName);
+		if(checkCateg!=null)
+			return "teacherView";
 		catRepo.save(categoryToSave);
 		return "teacherView";
 		
